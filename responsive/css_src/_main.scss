@@ -47,3 +47,45 @@
 
 
 }
+
+.main-visual{
+
+  &-img{
+    display:block;
+  }
+
+}
+
+.text-section{
+
+  >.inner-text{
+    height:200px;
+    background:#ddd;
+  }
+
+  .def-list{
+    width:286px;
+    height:200px;
+    text-align:center;
+    padding:50px 34px 0;
+    box-sizing:border-box;
+    float:left;
+    margin-right:20px;
+
+    &:last-child{
+      margin-right:0;
+    }
+
+    &-title{
+      font-weight:700;
+    }
+
+    &-data{
+      font-size:13px;
+      font-weight:300;
+      line-height:1.2;
+      margin-top:20px;
+    }
+  }
+
+}
