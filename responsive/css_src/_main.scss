@@ -67,6 +67,8 @@
   >.inner-text{
     height:200px;
     background:#ddd;
+
+    @extend %clearfix;
   }
 
   .def-list{
@@ -141,6 +143,29 @@
 
   .gnb-list-item{
     margin-left:44px;
+  }
+
+  .text-section {
+
+    >.inner-text {
+      height:auto;
+    }
+
+    .def-list{
+      width:50%;
+      margin-right:0;
+      padding:50px 47px 0;
+    }
+
+  }
+
+  .list-visual-list-item{
+
+    &:nth-child(2){ width : 50%; }
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5){ width:33.33%; }
+
   }
 
 }
@@ -237,6 +262,34 @@
       }
 
     }
+  }
+
+  .text-section {
+
+    >.inner-text {
+      height:auto;
+    }
+
+    .def-list{
+      width:100%;
+      margin-right:0;
+      padding:50px 47px 0;
+    }
+
+  }
+
+  .list-visual-list-item{
+
+    &:nth-child(1){ width:100%; }
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5){ width:50%; }
+
+  }
+
+  .footer{
+    font-size:13px;
   }
 
 }
