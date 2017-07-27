@@ -136,7 +136,6 @@
 @media screen and (min-width:768px) and (max-width:1203px) {
 
   .header{
-    background:red;
     padding:18px 20px 0;
   }
 
@@ -165,24 +164,78 @@
   .gnb{
     float:none;
     position:absolute;
-    //display:none;
+    display:none;
+    top: 60px;
+    width:100%;
+    background:#fff;
 
     &-list{
 
       &-item{
         margin-left:0;
         float:none;
+        border-bottom:1px solid #ddd;
+        box-sizing:border-box;
+        position:relative;
+
+        &:after{
+          content:"";
+          display:block;
+          width:7px;
+          height:10px;
+          background:url(../images/gnb_arrow.png) no-repeat 0 0;
+          position:absolute;
+          top:16px;
+          right:20px;
+        }
+      }
+
+      &-link{
+        display:block;
+        padding:13px 20px;
       }
 
     }
 
     &-toggle{
       display:block;
-      width:30px;
-      height:3px;
-      background:#000;
       border:0;
       padding:8px 0;
+      background:none;
+      position:absolute;
+      top:20px;
+      left:20px;
+
+
+      span{
+        display:block;
+        width:25px;
+        height:3px;
+        background:#000;
+        text-indent:-99999em;
+      }
+
+      &:before{
+        content:"";
+        display:block;
+        width:25px;
+        height:3px;
+        background:#000;
+        position:absolute;
+        top:0;
+
+      }
+
+      &:after{
+        content:"";
+        display:block;
+        width:25px;
+        height:3px;
+        background:#000;
+        position:absolute;
+        bottom:0;
+      }
+
     }
   }
 
