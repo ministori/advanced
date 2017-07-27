@@ -5,9 +5,10 @@
   box-sizing:border-box;
 
   .logo{
-    font-family: 'Stardos Stencil', cursive;
-    font-size:30px;
-    font-weight:700;
+    width:214px;
+    height:22px;
+    background:url(../images/logo_sprite.png) no-repeat 0 0;
+    text-indent:-99999em;
     float:left;
   }
 
@@ -43,6 +44,10 @@
     }
 
 
+  }
+
+  &-toggle{
+    display:none;
   }
 
 
@@ -145,7 +150,16 @@
 @media screen and (min-width:320px) and (max-width:767px) {
 
   .header{
-    background:blue;
+    padding-top:20px;
+
+    .logo{
+      width:172px;
+      height:18px;
+      background-position:0 -42px;
+      margin:0 auto;
+      float:none;
+    }
+
   }
 
   .gnb{
@@ -161,6 +175,36 @@
       }
 
     }
+
+    &-toggle{
+      display:block;
+      width:30px;
+      height:3px;
+      background:#000;
+      border:0;
+      padding:8px 0;
+    }
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
