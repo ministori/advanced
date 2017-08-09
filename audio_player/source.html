@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AUDIO PLAYER</title>
+  <style>
+    .btn{
+      width:495px;
+      height:495px;
+      background:url(images/play_pause_button.png) no-repeat 0 0;
+      border:0;
+      text-indent:-99999em;
+      cursor:pointer;
+    }
+
+    .btn.pause{
+      background-position:-505px 0;
+    }
+
+    .progress{
+      border:1px solid red;
+      height:20px;
+    }
+
+    .progress .bar{
+      width:0;
+      height:20px;
+      background:skyblue;
+      transition:all 1s linear;
+    }
+  </style>
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function(){
+
+      var audio = document.getElementById('audio');
+
+      var totalSecond = 0; // 전체 시간(초)를 담는 변수
+      var currentSecond = 0; // 현재 시간(초)를 담는 변수
+      var prevSecond = 0; // 이전 시간을 담는 변수
+
+      var totalTimeView = ''; // 전체시간 화면 표시 내용을 담는 변수
+      var currentTimeView = ''; // 현재시간 화면 표시 내용을 담는 변수
+      var barAmount;
+
+      // 오디오 파일 로딩 완료시 loadedmetadata 이벤트 발생
+      $('.audio').on('loadedmetadata', function(){
+        totalSecond = audio.duration; // 전체 시간(초)
+        totalTimeView = Math.floor(audio.duration / 60) + ':' + Math.floor(audio.duration % 60); // 화면 표시용 분초로 변환
+        currentSecond = audio.currentTime; // 현재 시간
+        currentTimeView = Math.floor(audio.currentTime / 60) + ':' + Math.floor(audio.currentTime % 60); // 화면 표시용 분초로 변환
+
+        $('.total-time').html(totalTimeView);
+        $('.current-time').html(currentTimeView);
+
+      });
+
+      $('.audio').on('timeupdate', function(){
+
+        currentSecond = Math.floor(audio.currentTime);
+
+        barAmount = Math.floor( currentSecond / totalSecond * 100 ) + '%';
+
+        currentTimeView = Math.floor(currentSecond / 60) + ':' + Math.floor(currentSecond % 60); // 화면 표시용 분초로 변환
+        $('.current-time').html(currentTimeView);
+
+        console.log(currentSecond, prevSecond);
+
+        if( currentSecond > prevSecond ){
+
+          console.log('a');
+
+          $('.bar').css({
+            width : barAmount
+          });
+
+          prevSecond = currentSecond;
+
+        }
+
+
+
+      });
+
+      $('.btn').data('play', false).on('click', function(){
+
+        if( !$(this).data('play') ){
+
+          $(this).removeClass('play').addClass('pause').data('play', true);
+
+          audio.play();
+
+        } else {
+
+          $(this).removeClass('pause').addClass('play').data('play', false);
+
+          audio.pause();
+
+        }
+
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<div class="wrap">
+
+  <audio id="audio" class="audio" controls>
+    <source src="audio/audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+
+  <div class="total-time">0</div>
+  <div class="current-time">0</div>
+
+  <button type="button" class="btn play">play</button>
+
+</div>
+
+</body>
+</html>
