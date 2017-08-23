@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function(){
+
+      // 로딩할 때 전체 img-wrap의 자식요소들의 개수를 배열 변수에 저장해서 사용
+      var imgWrap = [];
+
+      for(var i=0; i<$('.img-wrap').length; i++){
+        imgWrap[i] = $('.img-wrap').eq(i).children().length;
+      }
+
+      for(var j=0; j<$('.img-wrap').length; j++){
+        console.log( imgWrap[j] );
+      }
+
+      // img-wrap을 클릭했을 때 해당 영역에 속한 자식요소들의 개수를 읽어옴
+      $('.img-wrap').on('click', function(){
+        console.log( $(this).children().length );
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+
+<div class="img-wrap">
+
+  <img src="" class="image" alt="image" />
+  <img src="" class="image" alt="image" />
+
+</div>
+
+<div class="img-wrap">
+
+  <img src="" class="image" alt="image" />
+  <img src="" class="image" alt="image" />
+  <img src="" class="image" alt="image" />
+
+</div>
+
+</body>
+</html>
