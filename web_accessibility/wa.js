@@ -77,7 +77,7 @@ $(function(){
 
     // location 객체의 href 프로퍼티에 주소값을 넣어주면 해당 주소로 이동
     //location.href = url;
-    
+
     // 새창 열기
     window.open(url);
 
