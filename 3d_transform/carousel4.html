@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carousel</title>
+  <style>
+    .container {
+      width: 316px;
+      height: 290px;
+      position: relative;
+      perspective: 1000px;
+      margin:100px auto;
+    }
+
+    #carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition:transform 1s;
+      animation:roll 2s infinite linear;
+    }
+
+    #carousel figure {
+      margin: 0;
+      display: block;
+      position: absolute;
+      width: 316px;
+      height: 290px;
+      /*left: 13px;*/
+      /*top: 13px;*/
+      /*border: 2px solid black;*/
+      /*opacity:0.5;*/
+      box-sizing:border-box;
+    }
+
+    #carousel figure:nth-child(1) { background:red;           transform: rotateY(   0deg ) translateZ(91px); }
+    #carousel figure:nth-child(2) { background:blue;          transform: rotateY( 120deg ) translateZ(91px); }
+    #carousel figure:nth-child(3) { background:blueviolet;    transform: rotateY( 240deg ) translateZ(91px); }
+
+    @keyframes roll {
+      0% {
+        transform:translateZ(-288px) rotateY(0deg);
+      }
+
+      100%{
+        transform:translateZ(-288px) rotateY(360deg);
+      }
+    }
+
+  </style>
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function(){
+
+      var deltaDegree = 0;
+
+      $('.btn-prev').on('click', function(){
+
+        deltaDegree += 120;
+
+        $('#carousel').css({
+          transform : 'translateZ(-288px) rotateY(' + deltaDegree + 'deg)'
+        });
+
+      });
+
+      $('.btn-next').on('click', function(){
+
+        deltaDegree -= 120;
+
+        $('#carousel').css({
+          transform : 'translateZ(-288px) rotateY(' + deltaDegree + 'deg)'
+        });
+
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<section class="container">
+  <div id="carousel">
+    <figure>1</figure>
+    <figure>2</figure>
+    <figure>3</figure>
+  </div>
+</section>
+
+<div>
+  <button type="button" class="btn-prev">prev</button>
+  <button type="button" class="btn-next">next</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+      animation: myfirst 5s forwards;
+      animation-direction: normal;
+    }
+
+    div.on{
+      animation: myfirst2 5s forwards;
+      animation-direction: normal;
+    }
+
+    @keyframes myfirst {
+      0%   {background: red; left: 0px; top: 0px;}
+      100% {background: red; left: 500px; top: 0px;}
+    }
+
+    @keyframes myfirst2 {
+      0%   {background: red; left: 500px; top: 0px;}
+      100% {background: red; left: 0px; top: 0px;}
+    }
+  </style>
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function(){
+      $('p').on('click', function(){
+        $('div').addClass('on');
+      });
+    });
+  </script>
+</head>
+<body>
+
+<p>Do the animation once, then do the animation backwards:</p>
+<div></div>
+<p><strong>Note:</strong> The animation-direction property is not supported in Internet Explorer 9 and earlier versions.</p>
+
+</body>
+</html>
